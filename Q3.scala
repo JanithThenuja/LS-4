@@ -1,20 +1,22 @@
-object main extends App{
-    def toUpper(name1: String): String={
-        name1.toUpperCase()
-    }
-    def toLower(name2: String): String={ 
-        name2.toLowerCase()
-    }
-    def changeNames(name: String, change: String => String): String = {
-        change(name)
-    }
+object StringFormatting {
+  def main(args: Array[String]): Unit = {
+    println(toUpper("Benny"))
+    println(formatNames("Niroshan", 1))
+    println(toLower("Saman"))
+    println(formatNames("Kumara", 5))
+  }
 
-    val names = List("Benny", "Niroshan", "Saman", "Kumara")
+  def toUpper(str: String): String = {
+    str.toUpperCase()
+  }
 
-    names.foreach { name =>
-    val changedName = changeNames(name, toUpper)
-    println(changedName)
-    }
-    
+  def toLower(str: String): String = {
+    str.toLowerCase()
+  }
+
+  def formatNames(name: String, index: Int): String = {
+    val changedChar = name.charAt(index)
+    val modifiedChar = changedChar.toUpper
+    name.patch(index, modifiedChar.toString,1)
+  }
 }
-   
